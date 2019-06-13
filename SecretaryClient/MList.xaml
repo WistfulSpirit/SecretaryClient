@@ -1,0 +1,36 @@
+﻿<Window x:Class="SecretaryClient.MList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecretaryClient"
+        mc:Ignorable="d"
+        Title="MList" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="lbMessages" ItemsSource="{Binding Path=messages,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock >
+                               <Run Text="{Binding Path=Sender.Name}"/>
+                               <Run Text=" --> "/>
+                               <Run Text="{Binding Path=Adressee.Name}"/>
+                        </TextBlock>
+                        <Expander Header="Инфо">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Заголовок:</TextBlock>
+                                    <TextBlock Text="{Binding Path=Title}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Содержание:</TextBlock>
+                                    <TextBlock Text="{Binding Path=Content}" Margin="5,0,0,0" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
