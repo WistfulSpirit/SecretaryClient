@@ -28,6 +28,11 @@ namespace SecretaryClient
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(tbTag.Text))
+            {
+                MessageBox.Show("Заполните все поля!", "Внимание!", MessageBoxButton.OK);
+                return;
+            }
             NTag = new Tag() { Value = tbTag.Text };
             DialogResult = true;
         }
